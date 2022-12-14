@@ -22,14 +22,19 @@ public class UserController {
     }
 
     @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public ResponseEntity getAllUsers(@RequestParam(name = "file") MultipartFile files){
-        service.addUsers(files);
+    public ResponseEntity saveUsers(@RequestParam(name = "file") MultipartFile files){
+        service.saveUsers(files);
         return ResponseEntity.status(HttpStatus.OK).build();
     }
 
     @GetMapping
-    public CompletableFuture<ResponseEntity<List<User>>> getUsers(){
-        CompletableFuture<List<User>> userSet1 = service.getAllUsers();
+    public CompletableFuture<ResponseEntity<List<User>>> retrieveUsers(){
+        CompletableFuture<List<User>> userSet1 = service.retrieveUsers();
         return userSet1.thenApply(ResponseEntity::ok);
     }
 }
+
+
+
+
+

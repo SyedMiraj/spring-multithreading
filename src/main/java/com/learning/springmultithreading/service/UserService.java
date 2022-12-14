@@ -3,6 +3,7 @@ package com.learning.springmultithreading.service;
 import com.learning.springmultithreading.entity.User;
 import com.learning.springmultithreading.repo.UserRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -19,14 +20,11 @@ import java.util.logging.Logger;
 @Slf4j
 public class UserService {
 
-    private final UserRepository repository;
-
-    public UserService(UserRepository repository) {
-        this.repository = repository;
-    }
+    @Autowired
+    private UserRepository repository;
 
     @Async
-    public void addUsers(MultipartFile files) {
+    public void saveUsers(MultipartFile files) {
         List<User> users = new ArrayList<>();
         try (final BufferedReader br = new BufferedReader(new InputStreamReader(files.getInputStream()))) {
                 String line;
@@ -48,11 +46,8 @@ public class UserService {
     }
 
     @Async
-    public CompletableFuture<List<User>> getAllUsers() {
+    public CompletableFuture<List<User>> retrieveUsers() {
         log.info("Current Thread: " + Thread.currentThread().getName());
-        CompletableFuture<List<User>> users1 = CompletableFuture.completedFuture(repository.findAll());
-        CompletableFuture<List<User>> users2 = CompletableFuture.completedFuture(repository.findAll());
-        CompletableFuture.allOf(users1, users2);
-        return null;
+        return CompletableFuture.completedFuture(repository.findAll());
     }
 }
