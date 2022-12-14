@@ -46,7 +46,7 @@ Here **@Configuration** will indicate that AyncConfig class has @Bean definition
 
 We will create two apis. One for saveUsers data and one for retrieveUsers data. When saveUsers api will be called a multipart file will send as request parameter and response will void. Data will be parsed and saved using a separate thread and we will monitor the thread name by logging. Similarly, for the retreiveUser api, no parameter will be passed and return type will be a list of users wrapped around CompletableFuture object. The CompletableFuture, introduced in Java 8, provides an easy way to write asynchronous, non-blocking and multi-threaded code. 
 
-In this project, we will use sample data about Users. Mock data is generated from Mockaroo[https://www.mockaroo.com/]. We will create a JPA entity User.
+In this project, we will use sample data about Users. Mock data is generated from [Mockaroo](https://www.mockaroo.com/). We will create a JPA entity User.
 ````
 @Entity
 @Table(name = "USERS_DATA")
