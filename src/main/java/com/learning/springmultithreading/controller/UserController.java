@@ -29,8 +29,8 @@ public class UserController {
 
     @GetMapping
     public CompletableFuture<ResponseEntity<List<User>>> retrieveUsers(){
-        CompletableFuture<List<User>> userSet1 = service.retrieveUsers();
-        return userSet1.thenApply(ResponseEntity::ok);
+        CompletableFuture<List<User>> users = service.retrieveUsers();
+        return users.thenApply(ResponseEntity::ok);
     }
 }
 

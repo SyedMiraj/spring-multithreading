@@ -13,7 +13,6 @@ import javax.persistence.Table;
 @Table(name = "USERS_DATA")
 @Getter
 @Setter
-@NoArgsConstructor
 public class User {
 
     @Id
