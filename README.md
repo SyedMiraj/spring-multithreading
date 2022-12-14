@@ -40,7 +40,7 @@ public class AsyncConfig {
     
 }
 ````
-Here **@Configuration** will indicate that AyncConfig class has @Bean definition methods and **@EnableAsync** will enable asynchronous process. Here core pool size set to 2 means 2 threads will be always present in the core pool. Max pool size set to 2 to make sure the most threads that can be produced will be 2. Thread name prefix is set to 'UserThread-' and will be helpful to identify the threads that are executing the asynchronous operation. Here initialization will create the blocking queue and the ThreadPoolExecutor. One important thing is to specify the bean name taskExecutor as Spring will specifically look for this bean when the server is started. If this bean is not defined, Spring will create a SimpleAsyncTaskExecutor by default.
+Here **@Configuration** will indicate that AyncConfig class has @Bean definition methods and **@EnableAsync** will enable asynchronous process. Here core pool size set to 2 means two threads will be always present in the core pool. Max pool size set to 2 to make sure the most threads that can be produced will be two. Thread name prefix is set to 'UserThread-' and will be helpful to identify the threads that are executing the asynchronous operation. Here initialization will create the blocking queue and the ThreadPoolExecutor. One important thing is to specify the bean name taskExecutor as Spring will specifically look for this bean when the server is started. If this bean is not defined, Spring will create a SimpleAsyncTaskExecutor by default.
 
 ## API development:
 
